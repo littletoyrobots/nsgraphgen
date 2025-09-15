@@ -3,7 +3,7 @@ module github.com/littletoyrobots/nsgraphgen
 go 1.24.3
 
 require (
-	github.com/emicklei/dot v1.9.0
+	github.com/emicklei/dot v1.9.1
 	github.com/spf13/cobra v1.9.1
 	github.com/spf13/viper v1.20.1
 )
