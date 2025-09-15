@@ -29,9 +29,9 @@ var cfgFile string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:     "nsgraphgen",
-	Short:   "Generate graphs from Netscaler configs to create graphviz dot and mermaid compatible outputs.",
-	Version: "0.1.0",
+	Use:   "nsgraphgen",
+	Short: "Generate graphs from Netscaler configs to create graphviz dot and mermaid compatible outputs.",
+	// Version: "0.1.0",
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	// Run: func(cmd *cobra.Command, args []string) { },
