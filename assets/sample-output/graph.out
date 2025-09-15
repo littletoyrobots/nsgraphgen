@@ -1,0 +1,32 @@
+digraph  {
+	rankdir="TB";
+	n2[fillcolor="yellow",label="10.100.212.19",shape="doublecircle",style="filled"];
+	n3[fillcolor="black",label="NOTFAKE-UN1-P1 | 172.27.88.204",shape="rectangle",style="rounded"];
+	n4[fillcolor="black",label="NOTFAKE-UN2-P1 | 172.27.92.41",shape="rectangle",style="rounded"];
+	n12[fillcolor="aqua",label="notfake.mydomain.com",shape="house",style="rounded,filled,bold"];
+	n1[fillcolor="yellow",label="Global | 0.0.0.0",shape="doublecircle",style="filled"];
+	n10[fillcolor="lightsalmon",label="act-cs-WebVIP-INT-notfake.mydomain.com",shape="invhouse",style="rounded,filled"];
+	n7[fillcolor="lightsalmon",label="csp-ADC-WebVIP1-INT-D1",shape="house",style="rounded,filled"];
+	n13[fillcolor="lightblue",label="gslb-svcp-ADC-WebVIP1-D1",shape="rectangle",style="rounded,filled"];
+	n8[fillcolor="lightblue",label="gslb-vsp-ADC-WebVIP1-D1-Primary",shape="house",style="rounded,filled"];
+	n9[fillcolor="lightblue",label="gslb-vsp-ADC-WebVIP1-D2-Secondary",shape="house",style="rounded,filled"];
+	n11[fillcolor="lightsalmon",label="pol-cs-WebVIP-INT-notfake.mydomain.com",shape="house",style="rounded,filled"];
+	n5[fillcolor="lightgrey",color="magenta",label="sgp-notfake-D1",shape="rectangle",style="rounded,filled,bold"];
+	n6[fillcolor="lightgoldenrodyellow",label="vsp-notfake-INT-D1",shape="house",style="rounded,filled"];
+	n14[fillcolor="aqua",label="webvip1.adc.mydomain.com",shape="house",style="rounded,filled,bold"];
+	n2->n7[fillcolor="green",label="443 | SSL"];
+	n12->n11[fillcolor="black",label=""];
+	n1->n6[fillcolor="green",label="SSL"];
+	n10->n6[fillcolor="black",label=""];
+	n7->n11[fillcolor="green",label="SSL"];
+	n13->n2[fillcolor="green",label="443 | SSL"];
+	n8->n13[fillcolor="black",label="GSLB"];
+	n8->n9[fillcolor="black",label="ROUNDROBIN"];
+	n9->n8[fillcolor="black",label="ROUNDROBIN"];
+	n11->n10[fillcolor="black",label=""];
+	n5->n4[fillcolor="green",label="443 | SSL"];
+	n5->n3[fillcolor="green",label="443 | SSL"];
+	n6->n5[fillcolor="green",label="SSL"];
+	n14->n8[fillcolor="black",label="GSLB"];
+	
+}

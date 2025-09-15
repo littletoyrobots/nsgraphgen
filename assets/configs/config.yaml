@@ -1,0 +1,17 @@
+rankdir: "LR"
+ignore-type: 
+#  - "Cert"
+#  - "AuthAction"
+#  - "AuthPolicy"
+#  - "STA"
+#  - "ResponderAction"
+#  - "ResponderPolicy"
+#  - "RewriteAction"
+#  - "RewritePolicy"
+ignore-name: 
+#  - "POL-RESPOND-SYS-HTTPtoHTTPS"
+#  - "vs-AlwaysUp"
+#  - "DROP"
+#  - "NOOP"
+  - "10.1.2.4"
+
