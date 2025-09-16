@@ -7,7 +7,6 @@
 # vim: set ts=2 sw=2 tw=0 fo=cnqoj
 
 version: 2
-project_name: nsgraphgen
 
 before:
   hooks:
@@ -81,10 +80,7 @@ changelog:
       order: 200
     - title: Other work
       order: 9999
+
 release:
   name_template: "v{{ .Version }}"
   footer: >-
-
-    ---
-
-    Released by [GoReleaser](https://github.com/goreleaser/goreleaser).
