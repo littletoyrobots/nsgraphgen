@@ -29,20 +29,17 @@ builds:
       - arm64
     ldflags:
       - -s -w -X nsgraphgen/cmd.version={{.Version}}
-    ignore:
-      - goos: windows
-        goarch: 386
 
 archives:
   - files:
       - README.md
       - LICENSE.md
       - completions/*
-  - formats: [tar.gz]
+    formats: [tar.gz]
     # this name template makes the OS and Arch compatible with the results of `uname`.
     name_template: >-
-      {{ .project_name }}-
-      {{- .version }}-
+      {{ .ProjectName }}-
+      {{- .Version }}-
       {{- if eq .Os "darwin" }}macos-
       {{- else }}{{- .Os }}-{{ end }}
       {{- if eq .Arch "amd64" }}x86_64
