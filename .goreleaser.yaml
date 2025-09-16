@@ -31,15 +31,17 @@ builds:
     ldflags:
       - -s -w -X nsgraphgen/cmd.version={{.Version}}
 
+universal_binaries:
+  - replace: false
+
 archives:
   - formats: [tar.gz]
     # this name template makes the OS and Arch compatible with the results of `uname`.
     name_template: >-
-      {{ .ProjectName }}-
-      {{- .Version }}-
-      {{- if eq .Os "darwin" }}macos-
-      {{- else }}{{- .Os }}-{{ end }}
+      {{ .ProjectName }}_
+      {{- title .Os }}_
       {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
       {{- else }}{{ .Arch }}{{ end }}
       {{- if .Arm }}v{{ .Arm }}{{ end }}
     # use zip for windows archives
@@ -48,7 +50,7 @@ archives:
         formats: [zip]
     files:
       - README.md
-      - LICENSE
+      - LICENSE.md
       - completions/*
 
 changelog:
@@ -57,8 +59,30 @@ changelog:
     exclude:
       - "^docs:"
       - "^test:"
-
+      - "^test\\("
+      - "^chore: typo$"
+      - "^chore: auto-update generated files$"
+      - "^chore\\(deps\\): "
+      - "^(build|ci): "
+      - go mod tidy 
+      - merge conflict
+      - Merge pull request
+      - Merge remote-tracking branch
+      - Merge branch
+  groups: 
+    - title: "New Features"
+      regexp: '^.*?feat(\(.+\))??!?:.+$'
+      order: 100
+    - title: "Security Updates"
+      regexp: '^.*?sec(\(.+\))??!?:.+$'
+      order: 150
+    - title: "Bug fixes"
+      regexp: '^.*?(fix|refactor)(\(.+\))??!?:.+$'
+      order: 200
+    - title: Other work
+      order: 9999
 release:
+  name_template: "v{{ .Version }}"
   footer: >-
 
     ---
