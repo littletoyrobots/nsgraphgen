@@ -124,8 +124,10 @@ ignore-type:
 
 ## Roadmap
 
-- [ ] Configure build system
-- [ ] Add Changelog
+- [x] Configure build system
+  - [x] initialize goreleaser
+  - [ ] get tagged releases built through github actions
+- [x] Add Changelog to releases
 - [ ] Create templates for issues
 - [ ] Dark mode for dot export
 - [ ] Include Legends toggle
@@ -141,9 +143,6 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 MIT-DNBM - [See here](https://github.com/CFPAOrg/MIT-DO-NOT-BOTHER-ME/)
 
-## Contact
-
 ## Acknowledgements
 
 - [@emicklei](https://github.com/emicklei) for the dot package this is based off.
--

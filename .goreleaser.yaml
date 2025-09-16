@@ -7,6 +7,7 @@
 # vim: set ts=2 sw=2 tw=0 fo=cnqoj
 
 version: 2
+ProjectName: nsgraphgen
 
 before:
   hooks:
@@ -24,23 +25,46 @@ builds:
       - linux
       - windows
       - darwin
+    goarch:
+      - amd64
+      - arm64
     ldflags:
       - -s -w -X nsgraphgen/cmd.version={{.Version}}
+    ignore:
+      - goos: windows
+        goarch: 386
 
 archives:
+  - files:
+      - README.md
+      - LICENSE.md
+      - completions/*
   - formats: [tar.gz]
     # this name template makes the OS and Arch compatible with the results of `uname`.
     name_template: >-
-      {{ .ProjectName }}_
-      {{- title .Os }}_
+      {{ .ProjectName }}-
+      {{- .Version }}-
+      {{- if eq .Os "darwin" }}macos-
+      {{- else }}{{- .Os }}-{{ end }}
       {{- if eq .Arch "amd64" }}x86_64
-      {{- else if eq .Arch "386" }}i386
       {{- else }}{{ .Arch }}{{ end }}
       {{- if .Arm }}v{{ .Arm }}{{ end }}
     # use zip for windows archives
     format_overrides:
       - goos: windows
         formats: [zip]
+  - id: binary
+    formats:
+      - binary
+    # this name template makes the OS and Arch compatible with the results of `uname`.
+    name_template: >-
+      {{ .ProjectName }}-
+      {{- .Version }}-
+      {{- if eq .Os "darwin" }}macos-
+      {{- else }}{{- .Os }}-{{ end }}
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}
 
 changelog:
   sort: asc
