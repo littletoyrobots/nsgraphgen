@@ -41,8 +41,8 @@ archives:
   - formats: [tar.gz]
     # this name template makes the OS and Arch compatible with the results of `uname`.
     name_template: >-
-      {{ .ProjectName }}-
-      {{- .Version }}-
+      {{ .project_name }}-
+      {{- .version }}-
       {{- if eq .Os "darwin" }}macos-
       {{- else }}{{- .Os }}-{{ end }}
       {{- if eq .Arch "amd64" }}x86_64
@@ -52,18 +52,7 @@ archives:
     format_overrides:
       - goos: windows
         formats: [zip]
-  - id: binary
-    formats:
-      - binary
-    # this name template makes the OS and Arch compatible with the results of `uname`.
-    name_template: >-
-      {{ .ProjectName }}-
-      {{- .Version }}-
-      {{- if eq .Os "darwin" }}macos-
-      {{- else }}{{- .Os }}-{{ end }}
-      {{- if eq .Arch "amd64" }}x86_64
-      {{- else }}{{ .Arch }}{{ end }}
-      {{- if .Arm }}v{{ .Arm }}{{ end }}
+
 
 changelog:
   sort: asc
